@@ -1,6 +1,9 @@
 import sys
 import re
-
-print "Was I updated and corrected"
+import BIO
 
 sys.exit()
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
