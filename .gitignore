@@ -1,2 +1,4 @@
 .project
 .pydevproject
+.gitignore
+.DS_Store
