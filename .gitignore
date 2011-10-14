@@ -2,3 +2,5 @@
 .pydevproject
 .gitignore
 .DS_Store
+*.pyc
+
