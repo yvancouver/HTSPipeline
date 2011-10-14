@@ -12,6 +12,7 @@ config = ConfigParser.RawConfigParser()
 config.add_section('Samtools')
 config.set('Samtools', 'Location', '/Users/yvans/Home/bin/samtools//samtools')
 config.set('Samtools', 'Version', 'Version: 0.1.18 (r982:295)')
+
 config.add_section('Bwa')
 config.set('Bwa', 'Location', '/Users/yvans/Home/bin/bwa//bwa')
 config.set('Bwa', 'Version', 'Version: 0.5.9-r16')
