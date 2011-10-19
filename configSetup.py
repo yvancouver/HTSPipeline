@@ -22,6 +22,10 @@ config.add_section('GATK')
 config.set('GATK' , 'location' , '/Users/yvans/Home/bin/GenomeAnalysisTK-latest/GenomeAnalysisTK.jar')
 config.set('GATK' , 'Version' , '')
 
+config.add_section('Picard')
+config.set('Picard' , 'location' , '/Users/yvans/Home/bin/picard/')
+config.set('Picard' , 'Version' , '')
+
 # Writing our configuration file to 'example.cfg'
 with open('config.cfg', 'wb') as configfile:
     config.write(configfile)
