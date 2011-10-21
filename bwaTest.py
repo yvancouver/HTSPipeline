@@ -1,37 +1,26 @@
-import shlex
+#import shlex
 import subprocess
 from subprocess import Popen, PIPE, STDOUT
-import os
+#import os
 import ConfigParser
 import doctest
+import configReader
 
-def Config(file,section):
-    config = ConfigParser.ConfigParser()
-    try:
-        config.readfp(open(file))
-    except:
-        message = "could not find the config file " + file
-        exit(message)
-
-    Version = config.get(section,'Version')
-    Location = config.get(section,'Location')
-    return(Version,Location)
 
 def bwaVersion():
-    r"""Return the samtools version
-    >>> p=Popen(['bwa'], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
-    >>> output = p.communicate()
-    >>> version = output[0].split('\n')[2]
-    >>> print version
-    Version: 0.5.9-r16
+    r"""Return the bwa version
+    >>> p=Popen(['bwa'], stdout=PIPE, stdin=PIPE, stderr=STDOUT); output = p.communicate(); bwaVer = configReader.Config(file,section)[0]; bwaVer == output[0].split('\n')[2]
+    True
     """
 
 def bwaLocation():
     r"""Test the location of bwa
-    >>> subprocess.check_output(["which", "bwa"]).strip()
-    '/Users/yvans/Home/bin/bwa//bwa'
+    >>> bwaloc = configReader.Config(file,section)[1]; bwaloc == subprocess.check_output(["which", "bwa"]).strip()
+    True
     """
-config_samtools=Config('/Users/yvans/Home/workspace/HTSPipeline/config.cfg','Bwa')
 
-#output = doctest.testmod()
-#print "Bwa:\n",output
+section = 'Bwa'
+file = '/Users/yvans/Home/workspace/HTSPipeline/config.cfg'
+
+if __name__ == "__main__":
+    doctest.testmod()

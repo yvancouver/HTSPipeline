@@ -3,5 +3,13 @@
 # as well where the config file is located/called?
 #
 #
-print "samtools tests"
+import doctest
 import samtoolsTest
+import bwaTest
+import GATKTest
+import PicardTest
+
+print "Bwa:\n", doctest.testmod(bwaTest)
+print "Samtools:\n", doctest.testmod(samtoolsTest)
+print "GATK:\n", doctest.testmod(GATKTest)
+print "Picard:\n" , doctest.testmod(PicardTest)
