@@ -1,1 +1,5 @@
 This should be the pipeline use for the diagnostic
+
+Fist one need to define in config.cfg the location and version of the different software used in the pipeline.
+The script configSetup can also be used and give some hints about the format expected for for config.cfg.
+Each Test scripts test for one particular software configuration and the tests should be called with TestAll.py
