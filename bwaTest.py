@@ -8,7 +8,7 @@ import configReader
 
 
 def bwaVersion():
-    r"""Return the bwa version
+    r"""Return the bwa version Need to comment better NOW
     >>> p=Popen(['bwa'], stdout=PIPE, stdin=PIPE, stderr=STDOUT); output = p.communicate(); bwaVer = configReader.Config(file,section)[0]; bwaVer == output[0].split('\n')[2]
     True
     """
