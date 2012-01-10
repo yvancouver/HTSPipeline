@@ -27,6 +27,14 @@ parser.add_option("-2", "--reads2", dest="reads2", default=None,
                   help="localisation of the read2 file")
 
 (opts,args) = parser.parse_args()
+print "args", args
+
+
+print "POTS" ,opts
+#print "R1", opts.READ1
+print "r1", opts.reads1
+#print "R2", opts.READS2
+print "r2", opts.reads2
 
 if opts.project == None:
     errmsg = "Bad or missing project in input."
@@ -77,7 +85,7 @@ config.set('Samtools', 'Version', 'Version: 0.1.18 (r982:295)')
 
 config.add_section('Bwa')
 config.set('Bwa', 'Location', '/Users/yvans/Home/bin/bwa//bwa')
-config.set('Bwa', 'Version', 'Version: 0.5.9-r16')
+config.set('Bwa', 'Version', 'Version: 0.5.9-r26-dev')
 
 config.add_section('GATK')
 config.set('GATK' , 'location' , '/Users/yvans/Home/bin/GenomeAnalysisTK-latest/GenomeAnalysisTK.jar')
@@ -93,11 +101,11 @@ config.set('DB','Location','Where should I put the reference genome?')
 config.set('DB','Version','Is a version need? I guess so')
 
 config.add_section('READS1')
-config.set('READS1','Location',opts.READ1)
+config.set('READS1','Location',opts.reads1)
 config.set('READS1','Version','')
 
 config.add_section('READS2')
-config.set('READS2','Location',opts.READS2)
+config.set('READS2','Location',opts.reads2)
 config.set('READS2','Version','')
 
 
