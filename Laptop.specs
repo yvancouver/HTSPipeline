@@ -1,0 +1,14 @@
+11.1.2012
+Python:
+	macus40:HTSPipeline yvans$ which python
+	/usr/bin/python
+	macus40:HTSPipeline yvans$ python --version
+	Python 2.7.1
+
+bwa
+	Version: 0.5.9-r26-dev
+	/Users/yvans/Home/bin//bwa -> /Users/yvans/Home/bin/bwa-0.5.10/bwa
+	
+gatk
+	macus40:HTSPipeline yvans$ alias gatk
+	alias gatk='java -Xmx4g -jar /Users/yvans/Home/bin/GenomeAnalysisTK-latest/GenomeAnalysisTK.jar'
