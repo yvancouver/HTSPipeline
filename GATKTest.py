@@ -5,9 +5,10 @@ import configReader
 
 def GATKVersion():
     r'''Test GATK Version
-    >>> version = subprocess.check_output(["java", "-jar" , "/Users/yvans/Home/bin/GenomeAnalysisTK-latest/GenomeAnalysisTK.jar", " --help"]); configReader.Config(file,section)[0] == version.split("\n")[1].split(",")[0]
+    >>> version = subprocess.check_output(["java", "-jar" , "/Users/yvans/Home/GATK/gatk/dist/GenomeAnalysisTK.jar", " --help"]); configReader.Config(file,section)[0] == version.split("\n")[1].split(",")[0]
     True
     '''
+
 def GATKLocation():
     r'''Test GATK location
     >>> os.path.exists(configReader.Config(file,section)[1])

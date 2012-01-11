@@ -88,8 +88,8 @@ config.set('Bwa', 'Location', '/Users/yvans/Home/bin/bwa//bwa')
 config.set('Bwa', 'Version', 'Version: 0.5.9-r26-dev')
 
 config.add_section('GATK')
-config.set('GATK' , 'location' , '/Users/yvans/Home/bin/GenomeAnalysisTK-latest/GenomeAnalysisTK.jar')
-config.set('GATK' , 'Version' , 'v1.2-1-g33967a4')
+config.set('GATK' , 'location' , '/Users/yvans/Home/GATK/gatk/dist/GenomeAnalysisTK.jar')
+config.set('GATK' , 'Version' , 'v1.4-11-g845c0b1')
 
 config.add_section('Picard')
 config.set('Picard' , 'Location' , '/Users/yvans/Home/bin/picard/')
