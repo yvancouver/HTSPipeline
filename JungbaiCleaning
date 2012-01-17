@@ -1,0 +1,16 @@
+Hei Yvan
+Below is an example of fastX commads that I used to filter adapter for read1 of sample-test-1 and a short description is provided as well:
+
+#1) filter adapter "CAAGCAGAAGACGGCATACGAGATCGTGATGTGACTGGAGTTCAGACGTGTGCTCTTCCGATC" with minmum match 20 bp in reads 1!
+fastx_clipper -Q 33 -a CAAGCAGAAGACGGCATACGAGATCGTGATGTGACTGGAGTTCAGACGTGTGCTCTTCCGATC -n -l 30 -v -M 20 -i DHTest1_R1.pf.fastq -o  DHTest1_R1.pf.clip.fastq
+
+#2) filter the same adapter for reads 1 in reverse complement order!
+fastx_reverse_complement -Q 33 -i DHTest1_R1.pf.clip2Rev.fastq | fastx_clipper -Q 33 -a CAAGCAGAAGACGGCATACGAGATCGTGATGTGACTGGAGTTCAGACGTGTGCTCTTCCGATC -n -v -l 30 -M 20 |fastx_reverse_complement -Q 33 > DHTest1_R1.pf.clip2Rev2.fastq
+
+#3) trimmer index from the first 10 bp in both 5' and 3' sites of reads 1!
+fastx_trimmer -v -Q 33 -f 11 -i DHTest1_R1.pf.clip2Rev2.fastq -o DHTest1_R1.pf.clip2Rev2.trim.fastq
+
+#4) Quality filtering, remove reads which have 50% of sequence reads with poor quailty such as the quality score smaller than 20.
+fastq_quality_filter -Q 33 -v -q 20 -p 50 -i DHTest1_R1.pf.clip2Rev2.trim2.fastq -o DHTest1_R1.pf.clip2Rev2.trim2.qualfilt.fastq
+
+After pre-processing both reads 1 and 2 with proper adapter and the above mentioned 4 steps, we will be able to remove most of noise from the reads and the cleaned reads will be mapped to human reference geneme with ~95% coverage.
