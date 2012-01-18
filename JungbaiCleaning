@@ -1,3 +1,5 @@
+From 3 Jan 2012
+
 Hei Yvan
 Below is an example of fastX commads that I used to filter adapter for read1 of sample-test-1 and a short description is provided as well:
 
@@ -14,3 +16,10 @@ fastx_trimmer -v -Q 33 -f 11 -i DHTest1_R1.pf.clip2Rev2.fastq -o DHTest1_R1.pf.c
 fastq_quality_filter -Q 33 -v -q 20 -p 50 -i DHTest1_R1.pf.clip2Rev2.trim2.fastq -o DHTest1_R1.pf.clip2Rev2.trim2.qualfilt.fastq
 
 After pre-processing both reads 1 and 2 with proper adapter and the above mentioned 4 steps, we will be able to remove most of noise from the reads and the cleaned reads will be mapped to human reference geneme with ~95% coverage.
+
+Step 2 is not needed
+
+and why trimming both ends?
+	this command just remove the first 10 base of the read
+
+
