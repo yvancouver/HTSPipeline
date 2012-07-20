@@ -8,6 +8,7 @@ import samtoolsTest
 import bwaTest
 import GATKTest
 import PicardTest
+import cutadaptTest
 
 print "Bwa:\n", doctest.testmod(bwaTest)
 print "Samtools:\n", doctest.testmod(samtoolsTest)
