@@ -11,7 +11,6 @@ import os
 import time
 
 def FindFiles(string,location):
-    print string
     list_of_files_path= False
     for dirname, dirnames, filenames in os.walk(location):
         for filename in filenames:
@@ -22,40 +21,17 @@ def FindFiles(string,location):
             
     return list_of_files_path
 
-'''
-            if ".txt" in file_path:
-                f = open( file_path, 'r' )
-                for line in f:
-                    if string in line:
-                        if f.name not in list_of_files: list_of_files.append(f.name )
-    files = sorted(set(list_of_files))
-
-    
-    if len(files) == 0 :
-        msg = "Could not find the TaqMan results for "+ SampleID +" plus precisement "+ string + " in here "+ location
-        sys.exit(msg)
-    elif len(files) > 1:
-        print "This Sample ID ",SampleID," having  this ID <",string,"> is present in different files\nWhich one is it?"
-        index =1
-        for i in files:
-            print index, i
-            index += 1
-        reponse = raw_input()
-        taq_file = files[int(reponse)-1]
-        return(taq_file)
-    else:
-        return(files)
-'''
 def evaluateSizeFile(filepath):
     statinfo = os.stat(filepath)
     return(statinfo.st_size)
 
-def KeywordsSearch(file_path,keyword):
+def KeywordsSearch(file_path,keywords):
     fh = open( file_path, 'r' )
     checked = False
     for line in fh:
-        if keyword in line:
-            checked = True
+        for keyword in keywords:
+            if keyword in line:
+                checked = True
         
     return checked
 
@@ -75,37 +51,38 @@ list_of_errors_containing_files = { 'errIndelRealigner': 0,
                                     'errUnifiedGenotyper': 0,
                                     'errCombineVariants': 0,
                                     'errVariantFiltrationIndel': 0,
-                                    'errVariantRecalibratorSNP': 1000,
+                                    'errVariantRecalibratorSNP': 0,
                                     'errConvert2annovarAll': 1000,
                                     'errConvert2annovarInCand': 1000,
                                     'errTableAnnovarAll': 1000,
-                                    'errTableAnnovarInCand': 1000,
-                                    'bwaTest': 721}
+                                    'errTableAnnovarInCand': 1000
+                                    }
 
-list_of_errors_containing_files = { 'errTableAnnovarInCand': 1000,
-                                    'bwaTest': 721
-                                  }
+
 
 location = os.getcwd()
-
+keywords = ["NOTICE","Runtime.totalMemory"]
 for error_file in list_of_errors_containing_files:
-    print "\nSearch this file ", error_file
+    #print "\nSearch this file ", error_file
 
     target=FindFiles(error_file,location)
     if target:
-        print "evalute this  ",target
+        #print "evalute this  ",target
         size = evaluateSizeFile(target)
         #print size, " of ", target
         if size == list_of_errors_containing_files[error_file]:
-            print "GOOD"
+            pass
+#            print "GOOD"
         else:
-            print "Need to check if content if OK"
-            print "Runtime.total , "
-            test = KeywordsSearch(target,"Runtime")
+#            print "Need to check if content if OK"
+            test = KeywordsSearch(target,keywords)
             if test:
-                print "NOWORRIES"
+                pass
+#                print "NOWORRIES"
             else:
                 print"really bad"
-                print "one need to check ", target
+                print "one need to check "
+                sys.exit(target)
     else:
-        print "Nothingfound"
+        print error_file, "\t Not Found.\nIs the analysis finished or incomplete"
+        print "\t\t PLEASE CHECK\n"
