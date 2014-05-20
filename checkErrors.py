@@ -55,7 +55,8 @@ list_of_errors_containing_files = { 'errIndelRealigner': 0,
                                     'errConvert2annovarAll': 1000,
                                     'errConvert2annovarInCand': 1000,
                                     'errTableAnnovarAll': 1000,
-                                    'errTableAnnovarInCand': 1000
+                                    'errTableAnnovarInCand': 1000,
+                                    '_NEED_REVIEW': 0
                                     }
 
 
@@ -84,5 +85,8 @@ for error_file in list_of_errors_containing_files:
                 print "one need to check "
                 sys.exit(target)
     else:
-        print error_file, "\t Not Found.\nIs the analysis finished or incomplete"
-        print "\t\t PLEASE CHECK\n"
+        if error_file == '_NEED_REVIEW':
+            pass
+        else:
+            print error_file, "\t Not Found.\nIs the analysis finished or incomplete"
+            print "\t\t PLEASE CHECK\n"
